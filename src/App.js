@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./router/Home";
+import Account from "./router/Account";
 import Login from "./router/Login";
 import { AuthContextProvider } from "./firebase/FirebaseContext";
 import { useContext } from "react";
+import PrivateRoute from "./firebase/FirebasePrivateRoute";
 // import SignUp from "./router/SignUp";
 
 const App = () => {
@@ -10,9 +11,8 @@ const App = () => {
     <AuthContextProvider>
       <Router>
         <div>
-          <Route exact path="/home" component={Home} />
+          <PrivateRoute exact path="/" component={Account} />
           <Route exact path="/login" component={Login} />
-          {/* <Route exact path="/signup" component={SignUp} /> */}
         </div>
       </Router>
     </AuthContextProvider>
