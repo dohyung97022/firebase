@@ -1,5 +1,5 @@
-import React from 'react';
-import firebase from 'firebase/app';
+import React from "react";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 export const firebaseApp = firebase.initializeApp({
@@ -8,55 +8,41 @@ export const firebaseApp = firebase.initializeApp({
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId:  process.env.REACT_APP_MESSAGING_SENDER_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 });
 
 const auth = firebase.auth();
-const googleProvider = new firebase.auth.GoogleAuthProvider()
-const facebookProvider = new firebase.auth.FacebookAuthProvider()
-const twitterProvider = new firebase.auth.TwitterAuthProvider()
-const githubProvider = new firebase.auth.GithubAuthProvider()
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+const twitterProvider = new firebase.auth.TwitterAuthProvider();
+const githubProvider = new firebase.auth.GithubAuthProvider();
 
 const signInWith = (provider) => {
-  auth.signInWithPopup(provider).then((res) => {
-    console.log(res.user)
-  }).catch((error) => {
-    console.log(error.message)
-  })
-}
+  auth
+    .signInWithPopup(provider)
+    .then((res) => {
+      console.log(res.user);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
 
 export const signInWithGoogle = () => {
-  signInWith(googleProvider)
-}
+  signInWith(googleProvider);
+};
 export const signInWithFacebook = () => {
-  signInWith(facebookProvider)
-}
+  signInWith(facebookProvider);
+};
 export const signInWithTwitter = () => {
-  signInWith(twitterProvider)
-}
+  signInWith(twitterProvider);
+};
 export const signInWithGithub = () => {
-  signInWith(githubProvider)
-}
+  signInWith(githubProvider);
+};
 
 export function FirebaseAuth() {
-  return (
-    <div className="App">
-      <div className="login-buttons">
-        <button className="login-provider-button" onClick={()=>{signInWithGoogle()}}>
-        <span> Continue with Google</span>
-       </button>
-       <button className="login-provider-button" onClick={()=>{signInWithFacebook()}}>
-        <span> Continue with Facebook</span>
-       </button>
-       <button className="login-provider-button" onClick={()=>{signInWithTwitter()}}>
-        <span> Continue with Twitter</span>
-       </button>
-       <button className="login-provider-button" onClick={()=>{signInWithGithub()}}>
-        <span> Continue with Github</span>
-       </button>
-      </div>
-    </div>
-  );
+  return <div></div>;
 }
