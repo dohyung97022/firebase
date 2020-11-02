@@ -2,8 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import "firebase/auth";
 
-
-export const app = firebase.initializeApp({
+export const firebaseApp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
@@ -20,7 +19,6 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider()
 const twitterProvider = new firebase.auth.TwitterAuthProvider()
 const githubProvider = new firebase.auth.GithubAuthProvider()
 
-
 const signInWith = (provider) => {
   auth.signInWithPopup(provider).then((res) => {
     console.log(res.user)
@@ -29,25 +27,36 @@ const signInWith = (provider) => {
   })
 }
 
-function FirebaseAuth() {
+export const signInWithGoogle = () => {
+  signInWith(googleProvider)
+}
+export const signInWithFacebook = () => {
+  signInWith(facebookProvider)
+}
+export const signInWithTwitter = () => {
+  signInWith(twitterProvider)
+}
+export const signInWithGithub = () => {
+  signInWith(githubProvider)
+}
+
+export function FirebaseAuth() {
   return (
     <div className="App">
       <div className="login-buttons">
-        <button className="login-provider-button" onClick={()=>{signInWith(googleProvider)}}>
+        <button className="login-provider-button" onClick={()=>{signInWithGoogle()}}>
         <span> Continue with Google</span>
        </button>
-       <button className="login-provider-button" onClick={()=>{signInWith(facebookProvider)}}>
+       <button className="login-provider-button" onClick={()=>{signInWithFacebook()}}>
         <span> Continue with Facebook</span>
        </button>
-       <button className="login-provider-button" onClick={()=>{signInWith(twitterProvider)}}>
+       <button className="login-provider-button" onClick={()=>{signInWithTwitter()}}>
         <span> Continue with Twitter</span>
        </button>
-       <button className="login-provider-button" onClick={()=>{signInWith(githubProvider)}}>
+       <button className="login-provider-button" onClick={()=>{signInWithGithub()}}>
         <span> Continue with Github</span>
        </button>
       </div>
     </div>
   );
 }
-
-export default FirebaseAuth;
