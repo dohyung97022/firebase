@@ -42,7 +42,3 @@ export const signInWithTwitter = () => {
 export const signInWithGithub = () => {
   signInWith(githubProvider);
 };
-
-export function FirebaseAuth() {
-  return <div></div>;
-}
