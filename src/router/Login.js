@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   firebaseApp,
+  getIDToken,
   signInWithGoogle,
   signInWithFacebook,
   signInWithTwitter,
   signInWithGithub,
 } from "../firebase/Firebase";
+import { AuthContext } from "../firebase/FirebaseContext";
 
 const Login = () => {
+  const currentUser = useContext(AuthContext);
+  var IDToken;
+  console.log(currentUser);
+  if (currentUser) {
+    getIDToken().then(function (token) {
+      IDToken = token;
+    });
+  }
+  // currentUser.getIDToken().then(function (token) {
+  //   IDToken = token;
+  // });
   return (
     <>
       <div className="App">
         <div className="login-buttons">
+          <button
+            className="login-provider-button"
+            onClick={() => {
+              console.log(IDToken);
+            }}
+          >
+            <span> Get id token</span>
+          </button>
           <button
             className="login-provider-button"
             onClick={() => {
