@@ -18,9 +18,6 @@ const Login = () => {
       IDToken = token;
     });
   }
-  // currentUser.getIDToken().then(function (token) {
-  //   IDToken = token;
-  // });
   return (
     <>
       <div className="App">
