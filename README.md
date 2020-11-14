@@ -20,10 +20,10 @@ REACT_APP_MEASUREMENT_ID=""
 ## used dependencies
 
 npm add firebase  
-npm add dotenv   
-npm add react-router-dom   
+npm add dotenv  
+npm add react-router-dom
 
-## firebase.js
+## Firebase.js
 
 IMPORT
 
@@ -65,4 +65,53 @@ if (currentUser) {
     IDToken = token;
   });
 }
+```
+
+## FirebaseRoutes.js
+
+IMPORT
+
+```javascript
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AuthContextProvider } from "./firebase/FirebaseContext";
+import { NeedLoggedInRoute, NeedLoggedOutRoute } from "./firebase/FirebasePrivateRoute";
+import Account from "./router/Account";
+import Login from "./router/Login";
+```
+
+NEED LOGGED IN / LOGGED OUT ROUTE
+
+```javascript
+<AuthContextProvider>
+  <Router>
+    <NeedLoggedInRoute exact path="/home" redirect="/login" component={Account} />
+    <NeedLoggedOutRoute exact path="/login" redirect="/home" component={Account} />
+  </Router>
+</AuthContextProvider>
+```
+
+## FirebaseContext.js
+
+IMPORT
+
+```javascript
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AuthContextProvider } from "./firebase/FirebaseContext";
+```
+
+GIVE CONTEXT TO CHILD
+
+```javascript
+<AuthContextProvider>
+  <Router>
+    <Route />
+  </Router>
+</AuthContextProvider>
+```
+
+USE CONTEXT IN CHILD ROUTE
+
+```javascript
+import React, { useContext } from "react";
+const currentUser = useContext(AuthContext);
 ```

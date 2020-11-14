@@ -2,15 +2,15 @@ import React, { useContext } from "react";
 import { firebaseApp } from "../firebase/Firebase";
 import { AuthContext } from "../firebase/FirebaseContext";
 
-const Account = () => {
+const Home = () => {
   const currentUser = useContext(AuthContext);
   console.log(currentUser);
   return (
     <>
-      <h1>Account</h1>
+      <h1>Home</h1>
       <button onClick={() => firebaseApp.auth().signOut()}>Sign out</button>
     </>
   );
 };
 
-export default Account;
+export default Home;

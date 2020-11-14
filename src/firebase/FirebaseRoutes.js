@@ -21,18 +21,3 @@ export const NeedLoggedOutRoute = ({component: RouteComponent, ...givenComponent
     />
   );
 };
-
-/*사용법
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { AuthContextProvider } from "./firebase/FirebaseContext";
-import {NeedLoggedInRoute} from "./firebase/FirebasePrivateRoute";
-
-<AuthContextProvider>
-  <Router>
-    <div>
-      <NeedLoggedInRoute exact path="/" redirect="/login" component={Account} />
-      <Route exact path="/login" component={Login} />
-    </div>
-  </Router>
-</AuthContextProvider>
-*/
