@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Home from "./router/Home";
 import Login from "./router/Login";
 import { AuthContextProvider } from "./firebase/FirebaseContext";
@@ -11,6 +11,7 @@ const App = () => {
     <AuthContextProvider>
       <Router>
         <div>
+          <Route exact path="/"><Redirect to="/home" /></Route>
           <NeedLoggedInRoute exact path="/home" redirect="/login" component={Home} />
           <NeedLoggedOutRoute exact path="/login" redirect="/home" component={Login} />
         </div>

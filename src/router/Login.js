@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import {
   firebaseApp,
-  getIDToken,
   signInWithGoogle,
   signInWithFacebook,
   signInWithTwitter,
@@ -11,32 +10,10 @@ import { AuthContext } from "../firebase/FirebaseContext";
 
 const Login = () => {
   const currentUser = useContext(AuthContext);
-  var IDToken;
-  if (currentUser) {
-    getIDToken().then(function (token) {
-      IDToken = token;
-    });
-  }
   return (
     <>
       <div className="App">
         <div className="login-buttons">
-          <button
-            className="login-provider-button"
-            onClick={() => {
-              console.log(IDToken);
-            }}
-          >
-            <span> Get id token</span>
-          </button>
-          <button
-            className="login-provider-button"
-            onClick={() => {
-              console.log(IDToken);
-            }}
-          >
-            <span> Send id token</span>
-          </button>
           <button
             className="login-provider-button"
             onClick={() => {
@@ -71,7 +48,6 @@ const Login = () => {
           </button>
         </div>
       </div>
-      <button onClick={() => firebaseApp.auth().signOut()}>Sign out</button>
     </>
   );
 };
