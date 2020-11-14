@@ -20,8 +20,8 @@ REACT_APP_MEASUREMENT_ID=""
 ## used dependencies
 
 npm add firebase  
-npm add dotenv
-npm add react-router-dom
+npm add dotenv   
+npm add react-router-dom   
 
 ## firebase.js
 
