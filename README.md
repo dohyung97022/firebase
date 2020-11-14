@@ -23,4 +23,46 @@ npm add firebase
 npm add dotenv
 npm add react-router-dom
 
-## 정확하게 설명하기 readme에...
+## firebase.js
+
+IMPORT
+
+```javascript
+import React, { useContext } from "react";
+import {
+  firebaseApp,
+  getIDToken,
+  signInWithGoogle,
+  signInWithFacebook,
+  signInWithTwitter,
+  signInWithGithub,
+} from "../firebase/Firebase";
+import { AuthContext } from "../firebase/FirebaseContext";
+```
+
+SIGN IN
+
+```javascript
+signInWithGoogle();
+signInWithFacebook();
+signInWithTwitter();
+signInWithGithub();
+```
+
+SIGN OUT
+
+```javascript
+firebaseApp.auth().signOut();
+```
+
+GET ID TOKEN
+
+```javascript
+const currentUser = useContext(AuthContext);
+var IDToken;
+if (currentUser) {
+  getIDToken().then(function (token) {
+    IDToken = token;
+  });
+}
+```
