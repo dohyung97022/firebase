@@ -5,7 +5,6 @@ import { AuthContext } from "../firebase/FirebaseContext";
 const Account = () => {
   const currentUser = useContext(AuthContext);
   console.log(currentUser);
-
   return (
     <>
       <h1>Account</h1>

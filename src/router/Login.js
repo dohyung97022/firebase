@@ -12,7 +12,6 @@ import { AuthContext } from "../firebase/FirebaseContext";
 const Login = () => {
   const currentUser = useContext(AuthContext);
   var IDToken;
-  console.log(currentUser);
   if (currentUser) {
     getIDToken().then(function (token) {
       IDToken = token;
@@ -29,6 +28,14 @@ const Login = () => {
             }}
           >
             <span> Get id token</span>
+          </button>
+          <button
+            className="login-provider-button"
+            onClick={() => {
+              console.log(IDToken);
+            }}
+          >
+            <span> Send id token</span>
           </button>
           <button
             className="login-provider-button"
