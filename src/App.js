@@ -4,7 +4,6 @@ import Login from "./router/Login";
 import { AuthContextProvider } from "./firebase/FirebaseContext";
 import { useContext } from "react";
 import { NeedLoggedInRoute, NeedLoggedOutRoute } from "./firebase/FirebaseRoutes";
-// import SignUp from "./router/SignUp";
 
 const App = () => {
   return (

@@ -9,7 +9,6 @@ import {
 import { AuthContext } from "../firebase/FirebaseContext";
 
 const Login = () => {
-  const currentUser = useContext(AuthContext);
   return (
     <>
       <div className="App">
